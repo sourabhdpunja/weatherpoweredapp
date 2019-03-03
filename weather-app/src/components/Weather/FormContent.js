@@ -6,7 +6,11 @@ import {
     geocodeByAddress,
     getLatLng,
   } from 'react-places-autocomplete';
+
 import LocationComponent from './LocationComponent';
+import onPostCredential from '../../api/PostCredentials'
+import LoadingSpinner from './LoadingSpinner';
+import SuccessMessage from './SuccessMessage';
 
 const _style = {
     container: {
@@ -21,9 +25,13 @@ const _style = {
       marginRight: 120,
       minHeight: 60,
     },
+    buttonContainer: {
+        display: 'flex',
+    },
     button: {
         marginLeft: 120,
-        marginRight: 120,
+        marginRight: 20,
+        width: '71%',
     },
 };
 
@@ -37,6 +45,8 @@ class FormLayout extends Component {
             longitude: '',
             errorEmailText: '',
             errorLocationText: '',
+            isLoading: false, 
+            isSuccess: false,
         };
     }
 
@@ -75,7 +85,31 @@ class FormLayout extends Component {
             this.setState({ errorEmailText: ''});
             this.setState({ errorLocationText: ''});
             console.log("Successfully sent.")
-            console.log(email, latitude, longitude)
+            console.log(email, address, latitude, longitude)
+            this.setState({isLoading: true}, () => {
+                const response = onPostCredential({email, address, latitude, longitude})
+                response.then((response) => {
+                    if (response.success){
+                        this.setState({ 
+                            isLoading: true,
+                            isSuccess: false,
+                        });
+                    } else if (response.isEmailPresent) {
+                        this.setState({ 
+                            isLoading: false,
+                            isSuccess: false,
+                            errorEmailText: "Email address already present. Please give a different email Id",
+                        });
+                    } else {
+                        this.setState({ 
+                            isLoading: false,
+                            isSuccess: false,
+                            errorEmailText: "Please try a different emailId",
+                            errorLocationText: "Please try a different location.",
+                        });
+                    }
+                })
+            });
         }
     };
 
@@ -101,16 +135,21 @@ class FormLayout extends Component {
                     handleSelect = {this.handleSelect}
                     errorLocationText={this.state.errorLocationText}
                 />
-                <Button 
-                    color="primary" 
-                    variant="contained" 
-                    style={_style.button}
-                    onClick = {() => 
-                        this.submitCredentials(
-                            this.state.email, this.state.address, this.state.latitude, this.state.longitude
-                        )}>
-                    Subscribe
-                </Button>
+                <div  style={_style.buttonContainer} >
+                    <Button 
+                        color="primary" 
+                        variant="contained" 
+                        style={_style.button}
+                        disabled={this.state.isLoading}
+                        onClick = {() => 
+                            this.submitCredentials(
+                                this.state.email, this.state.address, this.state.latitude, this.state.longitude
+                            )}>
+                        Subscribe
+                    </Button>
+                    {this.state.isLoading ? <LoadingSpinner /> : null}
+                </div>
+                {this.state.isSuccess ? <SuccessMessage /> : null}
             </form>
         )
     }
