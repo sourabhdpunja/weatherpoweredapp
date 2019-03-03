@@ -19,7 +19,7 @@ const _style = {
     textField: {
       marginLeft: 120,
       marginRight: 120,
-      minHeight: 70,
+      minHeight: 60,
     },
     button: {
         marginLeft: 120,
