@@ -5,7 +5,7 @@ import FormContent from './FormContent';
 const _style = {
     outer: {
         width: 800,
-        height: 400,
+        height: 450,
         display: 'flex',
         borderStyle: 'groove',
         flexDirection: 'column',

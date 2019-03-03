@@ -16,7 +16,7 @@ const _style = {
         width: '70%',
     },
     divider: {
-        height: 2,
+        height: 1,
     },
 };
 
