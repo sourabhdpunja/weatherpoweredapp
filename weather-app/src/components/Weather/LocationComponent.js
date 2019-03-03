@@ -4,6 +4,9 @@ import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 
 const _style = {
+    container: {
+        minHeight: 200,
+    },
     textField: {
       marginLeft: 120,
       marginRight: 120,
@@ -22,7 +25,7 @@ class LocationComponent extends Component {
     renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions, loading }) => {
         console.log(this.props.errorLocationText)
         return(
-        <div>
+        <div style={_style.container}>
           <TextField
             required
             style={_style.location}

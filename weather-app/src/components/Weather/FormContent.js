@@ -23,7 +23,6 @@ const _style = {
     button: {
         marginLeft: 120,
         marginRight: 120,
-        marginTop: 100,
     },
 };
 
