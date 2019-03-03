@@ -23,7 +23,7 @@ const _style = {
     button: {
         marginLeft: 120,
         marginRight: 120,
-        marginTop: 40,
+        marginTop: 100,
     },
 };
 
@@ -99,7 +99,7 @@ class FormLayout extends Component {
                     handleChangeAddress = {this.handleChangeAddress}
                     error ={this.state.errorLocationText.length === 0 ? false : true }
                     handleSelect = {this.handleSelect}
-                    helperText={this.errorLocationText}
+                    errorLocationText={this.state.errorLocationText}
                 />
                 <Button 
                     color="primary" 
