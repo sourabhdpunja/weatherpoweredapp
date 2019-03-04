@@ -6,7 +6,7 @@ from django.core.validators import validate_email
 
 import json
 
-# Create your views here.
+
 def postCredentials(request):
     responseobject = json.loads(request.body.decode('utf-8'))
 
@@ -38,3 +38,8 @@ def postCredentials(request):
     except EmailCredentials.DoesNotExist:
         responseJson = {"success": False, "isEmailPresent": False, "isEmailInvalid": True}
         return JsonResponse(responseJson)
+
+
+def getAllCredentials(request):
+    allEmailEntries = list(EmailCredentials.objects.values())
+    return JsonResponse({'results': list(allEmailEntries)})
