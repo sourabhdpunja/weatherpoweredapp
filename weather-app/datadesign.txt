@@ -1,0 +1,10 @@
+
+Hi Daniel,
+
+Thank you for considering me for coding challenge. I have gone through the requirements for the projects and the related weather API's mentioned in the project. As you have suggested, I am planning to learn Django and apply it in this project. I am also planning to use react in frontend. My goal is to complete and submit this project by the end of this week. 
+
+I do have follow up a question on the requirements and required your clarification on the correctness of my interpretation.
+    1. The requirement mentioned about comparing the current temperature with the average temperature for that location at that time of the year. My interpretation of average temperature is average of temperature for that day in the last n days where n can be any number. I am assuming it to be 5 days because the limit in the number of calls which could be done per day to obtain temperature of a particular day in a free account in weatherbit API is 200. And so to try to maximize the number of calls for testing I have limited the days to 5 previous days.
+
+    My initial interpretation of average temperature meant average of the temperatures of a particular day in the previous n years. Eg: Average temperature for 03/04/2019 would be taking the average of temperature measured in 2018,2017,2016,2015 for the same day. But this approach ran into the problem with the API feature. Weatherbit API does not provide historical data of time period of more than a year in the free account. Taking this into account I have come up with the previous approach mentioned. 
+
