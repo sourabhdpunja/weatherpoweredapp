@@ -19,7 +19,7 @@ def postCredentials(request):
 
     location = responseobject["credential"]["location"]
     latitude = responseobject["credential"]["latitude"]
-    longitude = responseobject["credential"]["latitude"]
+    longitude = responseobject["credential"]["longitude"]
 
     if EmailCredentials.objects.filter(emailId=emailId).exists():
         responseJson = {"success": False, "isEmailPresent": True}
