@@ -40,7 +40,7 @@ class FormLayout extends Component {
         super(props);
         this.state = {
             email: this.props.defaultEmail,
-            address: '',
+            location: '',
             latitude: '',
             longitude: '',
             errorEmailText: '',
@@ -54,47 +54,54 @@ class FormLayout extends Component {
         this.setState({ email: event.target.value });
     };
 
-    handleChangeAddress = address => {
-        this.setState({ address });
+    handleChangeAddress = location => {
+        this.setState({ location });
     };
      
-    handleSelect = address => {
-        this.setState({ address });
-        geocodeByAddress(address)
+    handleSelect = location => {
+        this.setState({ location });
+        geocodeByAddress(location)
           .then(results => getLatLng(results[0]))
           .then(latLng => {
-              this.setState({ latitude: latLng.lat});
-              this.setState({ longitude: latLng.lng});
+              this.setState({ latitude: parseFloat(latLng.lat.toFixed(4))});
+              this.setState({ longitude: parseFloat(latLng.lng.toFixed(4))});
               this.setState({ errorLocationText: ''});
             })
           .catch(error => {
               this.setState({ errorLocationText: "Invalid location. Please try again"})
               this.setState({ latitude: ''});
               this.setState({ longitude: ''});
-              this.setState({ address: ''});
+              this.setState({ location: ''});
           });
     };
 
-    submitCredentials = (email, address, latitude, longitude) => {
+    submitCredentials = (email, location, latitude, longitude) => {
+        email = email.trim()
         if (!EmailValidator.validate(email)){
             this.setState({errorEmailText: "Invalid Email. Please use a valid email address"})
-        } else if(!latitude || !longitude || !address) {
+        } else if(!latitude || !longitude || !location) {
             this.setState({ errorEmailText: ''});
             this.setState({errorLocationText: "Please enter valid location."})
         } else {
             this.setState({ errorEmailText: ''});
             this.setState({ errorLocationText: ''});
             console.log("Successfully sent.")
-            console.log(email, address, latitude, longitude)
+            console.log(email, location, latitude, longitude)
             this.setState({isLoading: true}, () => {
-                const response = onPostCredential({email, address, latitude, longitude})
+                const response = onPostCredential({email, location, latitude, longitude})
                 response.then((response) => {
-                    if (response.success){
+                    if (response.data.success){
                         this.setState({ 
-                            isLoading: true,
-                            isSuccess: false,
+                            isLoading: false,
+                            isSuccess: true,
                         });
-                    } else if (response.isEmailPresent) {
+                    } else if (response.data.isEmailInvalid) {
+                        this.setState({ 
+                            isLoading: false,
+                            isSuccess: false,
+                            errorEmailText: "Please enter a valid email address",
+                        });
+                    } else if (response.data.isEmailPresent) {
                         this.setState({ 
                             isLoading: false,
                             isSuccess: false,
@@ -129,7 +136,7 @@ class FormLayout extends Component {
                     margin="normal"
                 />
                 <LocationComponent
-                    address = {this.state.address}
+                    location = {this.state.location}
                     handleChangeAddress = {this.handleChangeAddress}
                     error ={this.state.errorLocationText.length === 0 ? false : true }
                     handleSelect = {this.handleSelect}
@@ -143,7 +150,7 @@ class FormLayout extends Component {
                         disabled={this.state.isLoading}
                         onClick = {() => 
                             this.submitCredentials(
-                                this.state.email, this.state.address, this.state.latitude, this.state.longitude
+                                this.state.email, this.state.location, this.state.latitude, this.state.longitude
                             )}>
                         Subscribe
                     </Button>

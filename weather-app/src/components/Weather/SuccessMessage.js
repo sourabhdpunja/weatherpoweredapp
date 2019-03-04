@@ -14,7 +14,7 @@ const _style = {
 };
 const SuccessMessage = () => (
   <div style={_style.container}>
-    <i class="material-icons" style={_style.icon}>check_circle</i> 
+    <i className="material-icons" style={_style.icon}>check_circle</i> 
     <div>Email Id and Location Successfully Registered</div>
   </div>
 );

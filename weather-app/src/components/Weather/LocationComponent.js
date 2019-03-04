@@ -67,7 +67,7 @@ class LocationComponent extends Component {
     render() {
         return (
             <PlacesAutocomplete
-                value={this.props.address}
+                value={this.props.location}
                 onChange={this.props.handleChangeAddress}
                 onSelect={this.props.handleSelect}
                 onError={this.props.helperText}

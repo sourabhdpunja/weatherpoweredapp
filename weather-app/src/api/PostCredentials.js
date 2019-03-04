@@ -2,13 +2,20 @@ import axios from 'axios';
 
 const onPostCredential = async (credential) => {
     try {
-        let response = await axios.post('http://localhost:3000/api/postCredential', {
+        var config = {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                "Access-Control-Allow-Credentials": "true",
+                "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+                "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers",
+            },
+            credentials: 'include',
+        };
+        let response = await axios.post('api/weather/postcredentials/', {
             credential
-        });
-        response = {success: true}
+        }, config);
         return response
     } catch (e) {
-        console.log("This is Failure ", false)
         let response = {success: true}
         return response;
     }
