@@ -11,6 +11,7 @@ import LocationComponent from './LocationComponent';
 import onPostCredential from '../../api/PostCredentials'
 import LoadingSpinner from './LoadingSpinner';
 import SuccessMessage from './SuccessMessage';
+import ErrorMessage from './ErrorMessage';
 
 const _style = {
     container: {
@@ -47,6 +48,7 @@ class FormLayout extends Component {
             errorLocationText: '',
             isLoading: false, 
             isSuccess: false,
+            isError: false,
         };
     }
 
@@ -90,29 +92,37 @@ class FormLayout extends Component {
             this.setState({isLoading: true}, () => {
                 const response = onPostCredential({email, location, latitude, longitude})
                 response.then((response) => {
-                    if (response.data.success){
+                    if (!response.data){
+                        this.setState({ 
+                            isLoading: false,
+                            isSuccess: false,
+                            isError: true,
+                        });
+                    } else if (response.data.success){
                         this.setState({ 
                             isLoading: false,
                             isSuccess: true,
+                            isError: false,
                         });
                     } else if (response.data.isEmailInvalid) {
                         this.setState({ 
                             isLoading: false,
                             isSuccess: false,
+                            isError: false,
                             errorEmailText: "Please enter a valid email address",
                         });
                     } else if (response.data.isEmailPresent) {
                         this.setState({ 
                             isLoading: false,
                             isSuccess: false,
+                            isError: false,
                             errorEmailText: "Email address already present. Please give a different email Id",
                         });
                     } else {
                         this.setState({ 
                             isLoading: false,
                             isSuccess: false,
-                            errorEmailText: "Please try a different emailId",
-                            errorLocationText: "Please try a different location.",
+                            isError: true,
                         });
                     }
                 })
@@ -157,6 +167,7 @@ class FormLayout extends Component {
                     {this.state.isLoading ? <LoadingSpinner /> : null}
                 </div>
                 {this.state.isSuccess ? <SuccessMessage /> : null}
+                {this.state.isError ? <ErrorMessage /> : null}
             </form>
         )
     }
