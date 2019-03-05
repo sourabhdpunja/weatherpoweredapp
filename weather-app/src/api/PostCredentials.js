@@ -12,12 +12,24 @@ const onPostCredential = async (credential) => {
             credentials: 'include',
         };
         let response = await axios.post('api/weather/postcredentials/', {
-            credential
+            ...credential
         }, config);
-        return response
+        let data = response.data;
+        if (!data || response.status === 400 || response.status === 204){
+            return { isError: true } 
+        } else if (data.success) {
+            return { isSuccess: true } 
+        } else if (data.isEmailInvalid) {
+            return { errorEmailText: "Email address is invalid. Please enter a valid email address" }
+        } else if (data.isEmailPresent)  {
+            return { errorEmailText: "Email address already present. Please give a different email Id" }
+        } else if (data.isLocationInvalid)  {
+            return { errorLocationText: "Location is invalid. Please give a different location" }
+        } else {
+            return { isError: true }
+        }
     } catch (e) {
-        let response = {success: true}
-        return response;
+        return { isError: true }
     }
 }
 

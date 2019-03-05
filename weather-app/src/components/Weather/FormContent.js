@@ -65,67 +65,43 @@ class FormLayout extends Component {
         geocodeByAddress(location)
           .then(results => getLatLng(results[0]))
           .then(latLng => {
-              this.setState({ latitude: parseFloat(latLng.lat.toFixed(4))});
-              this.setState({ longitude: parseFloat(latLng.lng.toFixed(4))});
-              this.setState({ errorLocationText: ''});
+              this.setState({ latitude: parseFloat(latLng.lat.toFixed(4)),
+                              longitude: parseFloat(latLng.lng.toFixed(4)),
+                              errorLocationText: '',
+                });
             })
           .catch(error => {
-              this.setState({ errorLocationText: "Invalid location. Please try again"})
-              this.setState({ latitude: ''});
-              this.setState({ longitude: ''});
-              this.setState({ location: ''});
+              this.setState({ errorLocationText: "Invalid location. Please try again",
+                              latitude: '',
+                              longitude: '',
+                              location: '',
+                });
           });
     };
 
     submitCredentials = (email, location, latitude, longitude) => {
         email = email.trim()
         if (!EmailValidator.validate(email)){
-            this.setState({errorEmailText: "Invalid Email. Please use a valid email address"})
+            this.setState({ errorEmailText: "Invalid Email. Please use a valid email address" })
         } else if(!latitude || !longitude || !location) {
-            this.setState({ errorEmailText: ''});
-            this.setState({errorLocationText: "Please enter valid location."})
+            this.setState({ errorEmailText: "",
+                            errorLocationText: "Please enter valid location."
+                });
         } else {
-            this.setState({ errorEmailText: ''});
-            this.setState({ errorLocationText: ''});
-            console.log("Successfully sent.")
-            console.log(email, location, latitude, longitude)
-            this.setState({isLoading: true}, () => {
-                const response = onPostCredential({email, location, latitude, longitude})
-                response.then((response) => {
-                    if (!response.data){
-                        this.setState({ 
-                            isLoading: false,
-                            isSuccess: false,
-                            isError: true,
-                        });
-                    } else if (response.data.success){
-                        this.setState({ 
-                            isLoading: false,
-                            isSuccess: true,
-                            isError: false,
-                        });
-                    } else if (response.data.isEmailInvalid) {
-                        this.setState({ 
-                            isLoading: false,
-                            isSuccess: false,
-                            isError: false,
-                            errorEmailText: "Please enter a valid email address",
-                        });
-                    } else if (response.data.isEmailPresent) {
-                        this.setState({ 
-                            isLoading: false,
-                            isSuccess: false,
-                            isError: false,
-                            errorEmailText: "Email address already present. Please give a different email Id",
-                        });
-                    } else {
-                        this.setState({ 
-                            isLoading: false,
-                            isSuccess: false,
-                            isError: true,
-                        });
-                    }
-                })
+            this.setState({ errorEmailText: "",
+                            errorLocationText: "",
+                });
+            this.setState({ isLoading: true }, () => {
+                const response = onPostCredential({ email, location, latitude, longitude })
+                response.then((data) => {
+                    this.setState({
+                        isLoading: data.isLoading || false,
+                        isSuccess: data.isSuccess || false,
+                        isError: data.isError || false,
+                        errorEmailText: data.errorEmailText || "",
+                        errorLocationText: data.errorLocationText || "",
+                    });
+                });
             });
         }
     };

@@ -23,7 +23,6 @@ const _style = {
 class LocationComponent extends Component {
     
     renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions, loading }) => {
-        console.log(this.props.errorLocationText)
         return(
         <div style={_style.container}>
           <TextField
