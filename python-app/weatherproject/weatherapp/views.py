@@ -1,6 +1,7 @@
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.http import HttpResponse
 import logging
+import json
 # Custom Imports
 from weatherapp.models import Subscribers
 from django.core.exceptions import ValidationError
@@ -8,10 +9,15 @@ from django.core.validators import validate_email
 
 logger = logging.getLogger(__name__)
 
-import json
-
 
 def post_subscriber(request):
+    """
+    Method intercepting post request to add subscriber if not already present.
+    Parameter:
+        request: Request containing the subscriber to be added.
+    Return:
+        Response containing the status of subscriber been added or not.
+    """
     if request.method == 'POST':
         response_object = json.loads(request.body.decode('utf-8'))
 
@@ -57,6 +63,7 @@ def post_subscriber(request):
 
 
 def check_validations(email_id, location, latitude, longitude):
+    """ Checks if emailId and location is valid"""
     if not valid_email(email_id):
         logger.error("Invalid Email Id obtained in post subscriber request.")
         response_json = {"isEmailInvalid": True}
@@ -83,6 +90,13 @@ def valid_location(location, latitude, longitude):
 
 
 def get_all_subscribers(request):
+    """
+     Method intercepting get request to get all subscribers.
+     Parameter:
+         request: Get request
+     Return:
+         Response containing list of all subscribers.
+     """
     if request.method == 'GET':
         try:
             logger.info("Querying all records from Subscribers Table in getallsubscribers request.")
