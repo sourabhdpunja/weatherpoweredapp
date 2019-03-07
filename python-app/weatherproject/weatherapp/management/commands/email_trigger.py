@@ -32,7 +32,7 @@ class Command(BaseCommand):
 
         for subscriber in subscribers_list:
 
-            email_id = subscriber["emailId"]
+            to_email_id = subscriber["emailId"]
             latitude = subscriber["latitude"]
             longitude = subscriber["longitude"]
             curr_subscriber_coordinate = (latitude, longitude)
@@ -45,14 +45,14 @@ class Command(BaseCommand):
             else:
                 curr_temp_state = Command.fetch_curr_temp(self, latitude, longitude)
                 avg_temp = Command.calc_avg_temp(self, latitude, longitude)
-                email_template = Email(email_id, curr_temp_state[0], curr_temp_state[1])
+                email_template = Email(curr_temp_state[0], curr_temp_state[1])
                 email_template.create_email(avg_temp)
                 location_to_mail_map[curr_subscriber_coordinate] = email_template
 
-            email_message = self.build_emailmessage_obj(email_template)
+            email_message = self.build_emailmessage_obj(to_email_id, email_template)
             email_messages_obj_list.append(email_message)
             logger.info("Created Email Object with to {} and from {}"
-                        .format(email_template.to_address, config('FROM_EMAIL_ADDRESS')))
+                        .format(to_email_id, config('FROM_EMAIL_ADDRESS')))
 
         # Send multiple emails using same SMTP connection
         if len(email_messages_obj_list) > 0:
@@ -60,16 +60,17 @@ class Command(BaseCommand):
             connection.send_messages(email_messages_obj_list)
 
 
-    def build_emailmessage_obj(self, email_template):
+    def build_emailmessage_obj(self, to_address, email_template):
         """
-        Builds EmailMessage Instance using the email_template.
+        Builds EmailMessage Instance using the email_template and to_address.
         Parameters:
-            email_template: contains the subject, body, to_address and image to build the EmailMessage Instance
+            to_address: subscriber email id
+            email_template: contains the subject, body and image to build the EmailMessage Instance
         Returns:
             EmailMessage Instance
         """
         email_message = EmailMultiAlternatives(email_template.subject, email_template.html_body,
-                                               config('FROM_EMAIL_ADDRESS'), [email_template.to_address])
+                                               config('FROM_EMAIL_ADDRESS'), [to_address])
         email_message.attach_alternative(email_template.html_body, "text/html")
         email_message.content_subtype = 'html'
         email_message.mixed_subtype = 'related'

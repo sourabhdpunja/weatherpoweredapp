@@ -7,8 +7,7 @@ logger = logging.getLogger(__name__)
 
 # Class which defines the email properties such as subject, body, image.
 class Email:
-    def __init__(self, to_address, curr_temp, temp_desc):
-        self.to_address = to_address
+    def __init__(self, curr_temp, temp_desc):
         self.curr_temp = curr_temp
         self.temp_desc = temp_desc
         self.subject = ''
@@ -55,7 +54,7 @@ class Email:
                                           {'curr_temp': self.curr_temp, 'curr_state': self.temp_desc})
         self.text_body = strip_tags(self.html_body)
         try:
-            filehandle = open('.\weatherappdjango\images\\cold.gif', 'rb')
+            filehandle = open('.\weatherapp\images\\cold.gif', 'rb')
         except IOError:
             logger.error("cold.gif file does not exist in images folder")
             return
@@ -69,7 +68,7 @@ class Email:
                                           {'curr_temp': self.curr_temp, 'curr_state': self.temp_desc})
         self.text_body = strip_tags(self.html_body)
         try:
-            filehandle = open('.\weatherappdjango\images\\sun_bath.gif', 'rb')
+            filehandle = open('.\weatherapp\images\\sun_bath.gif', 'rb')
         except IOError:
             logger.error("sun_bath.gif file does not exist in images folder")
             return
@@ -83,7 +82,7 @@ class Email:
                                           {'curr_temp': self.curr_temp, 'curr_state': self.temp_desc})
         self.text_body = strip_tags(self.html_body)
         try:
-            filehandle = open('.\weatherappdjango\images\\normal.gif', 'rb')
+            filehandle = open('.\weatherapp\images\\normal.gif', 'rb')
         except IOError:
             logger.error("normal.gif file does not exist in images folder")
             return
