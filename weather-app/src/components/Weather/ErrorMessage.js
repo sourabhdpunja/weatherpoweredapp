@@ -15,7 +15,7 @@ const _style = {
 const ErrorMessage = () => (
   <div style={_style.container}>
     <i className="material-icons" style={_style.icon}>error</i> 
-    <div>Registration Unsuccessfull. Please try again later</div>
+    <div>Registration Unsuccessful. Please try again later</div>
   </div>
 );
 

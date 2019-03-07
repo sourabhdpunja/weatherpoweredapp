@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import EmailValidator from 'email-validator';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -41,8 +42,8 @@ class FormLayout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: this.props.defaultEmail,
-            location: '',
+            email: this.props.email,
+            location: this.props.location,
             latitude: '',
             longitude: '',
             errorEmailText: '',
@@ -153,8 +154,14 @@ class FormLayout extends Component {
     }
 };
 
+FormLayout.propTypes = {
+    email: PropTypes.string,
+    location: PropTypes.string,
+};
+
 FormLayout.defaultProps = {
-    defaultEmail: '',
+    email: '',
+    location: '',
 };
 
 export default FormLayout;
