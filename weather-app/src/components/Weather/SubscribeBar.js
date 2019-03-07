@@ -8,19 +8,15 @@ const _style = {
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        marginBottom: '30px'
     },
-    bar: {
-        backgroundColor: '#3f51b5'
-    }
 }
 
 const SubscribeBar = () => (
     <div style={_style.outer}>
-        <AppBar style={_style.backgroundColor} position="static">
+        <AppBar position="static" color="default">
         <Toolbar>
           <Typography variant="h6" color="inherit">
-            Weather Powered Email
+            Subscribe Here
           </Typography>
         </Toolbar>
       </AppBar>

@@ -1,4 +1,6 @@
 import React from 'react';
+// Custom import
+import TitleBar from './TitleBar'
 import WeatherContainer from './WeatherContainer';
 
 const _style = {
@@ -13,8 +15,11 @@ const _style = {
 }
 
 const Layout = () => (
-    <div style={_style.outer}>
-        <WeatherContainer/>
+    <div>
+        <TitleBar />
+        <div style={_style.outer}>
+            <WeatherContainer/>
+        </div>
     </div>
 );
 

@@ -7,6 +7,7 @@ import {
     getLatLng,
   } from 'react-places-autocomplete';
 
+// Custom imports
 import LocationComponent from './LocationComponent';
 import onPostCredential from '../../api/PostCredentials'
 import LoadingSpinner from './LoadingSpinner';
@@ -46,8 +47,11 @@ class FormLayout extends Component {
             longitude: '',
             errorEmailText: '',
             errorLocationText: '',
+            // boolean used to render loading spinner
             isLoading: false, 
+            // boolean used to render success message
             isSuccess: false,
+            // boolean used to render error message
             isError: false,
         };
     }
@@ -117,7 +121,7 @@ class FormLayout extends Component {
                     value={this.state.email}
                     style={_style.textField}
                     onChange={this.handleChange('email')}
-                    error ={this.state.errorEmailText.length === 0 ? false : true }
+                    error={this.state.errorEmailText.length === 0 ? false : true }
                     helperText={this.state.errorEmailText}
                     margin="normal"
                 />

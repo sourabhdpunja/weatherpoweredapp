@@ -1,5 +1,6 @@
 import React from 'react';
-import TitleBar from './TitleBar';
+// Custom imports
+import SubscribeBar from './SubscribeBar';
 import FormContent from './FormContent';
 
 const _style = {
@@ -14,7 +15,7 @@ const _style = {
 
 const WeatherContainer = () => (
     <div style={_style.outer}>
-        <TitleBar />
+        <SubscribeBar />
         <FormContent />
     </div>
 );
