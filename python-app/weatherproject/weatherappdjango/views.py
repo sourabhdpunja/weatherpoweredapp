@@ -1,14 +1,16 @@
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.http import HttpResponse
+import logging
 
 from weatherappdjango.models import EmailCredentials
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 
+logger = logging.getLogger(__name__)
+
 import json
 
-#TODO add log4j
-#TODO corsIntegration
+# TODO make table appear on its own.
 def post_credentials(request):
 
     if request.method == 'POST':
@@ -20,9 +22,11 @@ def post_credentials(request):
         longitude = response_object["longitude"]
 
         if not valid_email(email_id):
+            logger.error("Invalid Email Id obtained in postcredentials request.")
             response_json = {"isEmailInvalid": True}
             return JsonResponse(response_json)
         elif not valid_location(location, latitude, longitude):
+            logger.error("Invalid location obtained in postcredentials request.")
             response_json = {"isLocationInvalid": True}
             return JsonResponse(response_json)
 
@@ -30,11 +34,13 @@ def post_credentials(request):
         try:
             EmailCredentials.objects.get(emailId=email_id)
             response_json = {"isEmailPresent": True}
+            logger.info("Email Id already present in database in postcredentials request.")
             return JsonResponse(response_json)
         except EmailCredentials.DoesNotExist:
             pass
         except EmailCredentials.MultipleObjectsReturned:
             response_json = {"isEmailPresent": True}
+            logger.error("Multiple objects present for emailid in database in postcredentials request.")
             return JsonResponse(response_json)
 
         try:
@@ -42,13 +48,16 @@ def post_credentials(request):
                                                            location=location,
                                                            latitude=latitude,
                                                            longitude=longitude)
-        except Exception as e:
+        except Exception as err:
+            logger.error("{} raised. Error creating record in EmailCredentials during postcredentials request.".format(err.code))
             return HttpResponse(status=204)
 
         if email_object:
+            logger.info("Record successfully created in EmailCredentials.")
             response_json = {"success": True}
             return JsonResponse(response_json)
     else:
+        logger.error("Request made to postcredentials is not a post request.")
         return HttpResponseBadRequest
 
 
@@ -69,5 +78,15 @@ def valid_location(location, latitude, longitude):
 
 
 def get_all_credentials(request):
-    all_email_entries = list(EmailCredentials.objects.values())
-    return JsonResponse({'results': list(all_email_entries)})
+
+    if request.method == 'GET':
+        try:
+            logger.info("Querying all records from EmailCredentials Table in getallcredentials request.")
+            all_email_entries = list(EmailCredentials.objects.values())
+            return JsonResponse({'results': list(all_email_entries)})
+        except Exception as err:
+            logger.error("{} raised. Error querying for all records from EmailCredentials in getallcredentials request.".format(err.code))
+            return HttpResponse(status=204)
+    else:
+        logger.error("Request made to getallcredentials is not a get request.")
+        return HttpResponseBadRequest
