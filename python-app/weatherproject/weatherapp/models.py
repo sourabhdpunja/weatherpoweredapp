@@ -1,8 +1,7 @@
 from django.db import models
 from decimal import Decimal
 
-# Create your models here.
-class EmailCredentials(models.Model):
+class Subscribers(models.Model):
     emailId = models.CharField(max_length=120, default='', db_index=True)
     location = models.CharField(max_length=200, default='')
     latitude = models.DecimalField(max_digits=11,decimal_places=4, default=Decimal('0.0000'))

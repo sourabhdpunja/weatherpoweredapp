@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    'weatherappdjango',
+    'weatherapp',
     'django.contrib.admin',
     'corsheaders',
     'django.contrib.auth',
@@ -54,6 +54,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'urls'
+CSRF_COOKIE_SECURE=True
 CORS_ALLOW_METHODS = (
     'GET',
     'POST',
@@ -91,7 +92,7 @@ WSGI_APPLICATION = 'djangoproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': config('DB_ENGINE'),
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
@@ -121,7 +122,7 @@ logging.config.dictConfig({
         'logfile': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': "weatherappdjango/logs/logfile",
+            'filename': "weatherapp/logs/logfile",
             'maxBytes': 50000,
             'backupCount': 2,
             'formatter': 'console',
