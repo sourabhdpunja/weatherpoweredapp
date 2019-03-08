@@ -46,7 +46,7 @@ class Command(BaseCommand):
             else:
                 curr_temp_state = Command.fetch_curr_temp(self, latitude, longitude)
                 avg_temp = Command.calc_avg_temp(self, latitude, longitude)
-                email_template = Email(location, curr_temp_state[0], curr_temp_state[1])
+                email_template = Email(curr_temp_state[0], curr_temp_state[1], location)
                 email_template.create_email(avg_temp)
                 location_to_mail_map[curr_subscriber_coordinate] = email_template
 
