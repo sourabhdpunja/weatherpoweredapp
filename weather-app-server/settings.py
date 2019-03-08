@@ -55,14 +55,17 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'urls'
 CSRF_COOKIE_SECURE=True
+CSRF_COOKIE_NAME='csrftoken'
 CORS_ALLOW_METHODS = (
     'GET',
     'POST',
 )
 CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
     'localhost:8000',
 )
 CORS_ORIGIN_REGEX_WHITELIST = (
+    'localhost:3000',
     'localhost:8000',
 )
 
@@ -93,14 +96,7 @@ WSGI_APPLICATION = 'djangoproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': config('DB_ENGINE'),
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        'NAME': os.path.join(BASE_DIR, 'weather-app-server', 'db.sqlite3'),
     }
 }
 
@@ -122,7 +118,7 @@ logging.config.dictConfig({
         'logfile': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': "weatherapp/logs/logfile",
+            'filename': os.path.join(BASE_DIR,'weather-app-server','weatherapp','logs','logfile'),
             'maxBytes': 50000,
             'backupCount': 2,
             'formatter': 'console',

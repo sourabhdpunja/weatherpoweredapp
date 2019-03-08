@@ -73,6 +73,7 @@ def check_validations(email_id, location, latitude, longitude):
         response_json = {"isLocationInvalid": True}
         return JsonResponse(response_json)
 
+
 def valid_email(email_id):
     try:
         validate_email(email_id)
@@ -82,30 +83,8 @@ def valid_email(email_id):
 
 
 def valid_location(location, latitude, longitude):
-    if not location or not latitude or not longitude or\
-            (latitude < -90 or latitude > 90) or (longitude < -180 or longitude > 180):
-        return False
-    else:
+    # latitude should be between -90 to 90 and longitude between -180 to 180
+    if location and latitude and longitude and (-90 < latitude < 90) and (-180 < longitude < 180):
         return True
-
-
-def get_all_subscribers(request):
-    """
-     Method intercepting get request to get all subscribers.
-     Parameter:
-         request: Get request
-     Return:
-         Response containing list of all subscribers.
-     """
-    if request.method == 'GET':
-        try:
-            logger.info("Querying all records from Subscribers Table in getallsubscribers request.")
-            all_email_entries = list(Subscribers.objects.values())
-            return JsonResponse({'results': list(all_email_entries)})
-        except Exception as err:
-            logger.error("{} raised. Error querying for all records from EmailCredentials in getallsubscribers request."
-                         .format(err.code))
-            return HttpResponse(status=204)
     else:
-        logger.error("Request made to getallsubscribers is not a get request.")
-        return HttpResponseBadRequest
+        return False
