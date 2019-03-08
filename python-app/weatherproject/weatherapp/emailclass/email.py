@@ -7,9 +7,10 @@ logger = logging.getLogger(__name__)
 
 # Class which defines the email properties such as subject, body, image.
 class Email:
-    def __init__(self, curr_temp, temp_desc):
+    def __init__(self, curr_temp, temp_desc, location):
         self.curr_temp = curr_temp
         self.temp_desc = temp_desc
+        self.location = location
         self.subject = ''
         self.html_body = ''
         self.text_body = ''
@@ -51,7 +52,9 @@ class Email:
     def build_cold_email_body(self):
         """ Helper function to build the body of cold email"""
         self.html_body = render_to_string('email/cold_temp_mail.html',
-                                          {'curr_temp': self.curr_temp, 'curr_state': self.temp_desc})
+                                          {'curr_temp': self.curr_temp,
+                                           'curr_state': self.temp_desc,
+                                           'location': self.location})
         self.text_body = strip_tags(self.html_body)
         try:
             filehandle = open('.\weatherapp\images\\cold.gif', 'rb')
@@ -65,10 +68,12 @@ class Email:
     def build_warm_email_body(self):
         """ Helper function to build the body of warm email"""
         self.html_body = render_to_string('email/warm_temp_mail.html',
-                                          {'curr_temp': self.curr_temp, 'curr_state': self.temp_desc})
+                                          {'curr_temp': self.curr_temp,
+                                           'curr_state': self.temp_desc,
+                                           'location': self.location})
         self.text_body = strip_tags(self.html_body)
         try:
-            filehandle = open('.\weatherapp\images\\sun_bath.gif', 'rb')
+            filehandle = open('.\weatherapp\images\\good_weather.jpg', 'rb')
         except IOError:
             logger.error("sun_bath.gif file does not exist in images folder")
             return
@@ -79,7 +84,9 @@ class Email:
     def build_normal_email_body(self):
         """ Helper function to build the body of normal email"""
         self.html_body = render_to_string('email/normal_temp_mail.html',
-                                          {'curr_temp': self.curr_temp, 'curr_state': self.temp_desc})
+                                          {'curr_temp': self.curr_temp,
+                                           'curr_state': self.temp_desc,
+                                           'location': self.location})
         self.text_body = strip_tags(self.html_body)
         try:
             filehandle = open('.\weatherapp\images\\normal.gif', 'rb')
