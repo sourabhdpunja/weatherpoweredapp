@@ -10,7 +10,7 @@ import {
 
 // Custom imports
 import LocationComponent from './LocationComponent';
-import onPostCredential from '../../api/PostCredentials'
+import onPostCredential from '../../service/PostCredentials'
 import LoadingSpinner from './LoadingSpinner';
 import SuccessMessage from './SuccessMessage';
 import ErrorMessage from './ErrorMessage';
