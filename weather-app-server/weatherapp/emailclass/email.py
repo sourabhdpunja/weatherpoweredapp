@@ -71,8 +71,9 @@ class Email:
             self.subject = "It's nice out! Enjoy a discount on us."
             self.build_warm_email_body()
         else:
-            logger.error("Invalid temp_state given. Should be one of (COLD, NORMAL, WARM)")
-            raise ValueError
+            error_string = "Invalid temp_state given. Should be one of (COLD, NORMAL, WARM)"
+            logger.error(error_string)
+            raise ValueError(error_string)
 
     def build_cold_email_body(self):
         """ Helper function to build the body of cold email"""
@@ -100,7 +101,7 @@ class Email:
         try:
             filehandle = open(os.path.join(settings.BASE_DIR, 'weather-app-server', 'weatherapp', 'images', 'good_weather.jpg'), 'rb')
         except IOError:
-            logger.error("sun_bath.gif file does not exist in images folder")
+            logger.error("good_weather.jpg file does not exist in images folder")
             return
         self.image = MIMEImage(filehandle.read())
         self.image.add_header('Content-ID', '<image1>')
@@ -121,10 +122,3 @@ class Email:
         self.image = MIMEImage(filehandle.read())
         self.image.add_header('Content-ID', '<image1>')
         filehandle.close()
-
-
-
-
-
-
-

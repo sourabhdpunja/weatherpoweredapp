@@ -70,6 +70,8 @@ def get_closest_coordinate(curr_subscriber_coordinate, location_coordinate_list)
     """
     Fetches the coordinate within 50 km of the current coordinate if present from previous set of coordinates.
     If not present returns the current coordinate itself.
+    Note: Finding distance between two points using latitude and longitude is given in the following link
+    https://support.sisense.com/hc/en-us/articles/230644288-Calculate-Distance-Between-Two-Points-Using-Latitude-and-Longitude
     Parameters:
         curr_subscriber_coordinate: coordinate of the subscriber
         location_coordinate_list: coordinates of subscribers whose current and average temperature

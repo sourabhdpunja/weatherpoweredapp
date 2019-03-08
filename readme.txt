@@ -1,6 +1,6 @@
 
 The directory is subdivided into two directories
-    1. python-app : server side. Django 
+    1. weather-app-server : server side. Django 
     2. weather-app : client side. React
 
 To Install react client:
@@ -31,7 +31,7 @@ How to use the app after the server and client are running:
     1. Using front end application subscribe using a emailaddress and location.
     2. Once successful registration of the user is done, Navigate to folder weatherpoweredapp/python-app/weatherproject/
     3. Run the Django management command -> python manage.py email_trigger
-    4. After the cli completes running, the user registered shoud obtain the newsletter
+    4. After the cli completes running, the user registered shoud obtain an email.
 
 
 
