@@ -1,0 +1,10 @@
+2019-03-08 05:29:02,408 weatherapp.views INFO     Email Id already present in database in post subscriber request.
+2019-03-08 05:29:02,412 django.server INFO     "POST /api/weather/postsubscriber/ HTTP/1.1" 200 24
+2019-03-08 05:30:13,430 django.security.csrf WARNING  Forbidden (CSRF cookie not set.): /api/weather/postsubscriber/
+2019-03-08 05:30:13,434 django.server WARNING  "POST /api/weather/postsubscriber/ HTTP/1.1" 403 1386
+2019-03-08 05:30:34,745 weatherapp.views INFO     Email Id already present in database in post subscriber request.
+2019-03-08 05:30:34,745 django.server INFO     "POST /api/weather/postsubscriber/ HTTP/1.1" 200 24
+2019-03-08 05:33:03,877 django.security.csrf WARNING  Forbidden (CSRF token missing or incorrect.): /api/weather/postsubscriber/
+2019-03-08 05:33:03,881 django.server WARNING  "POST /api/weather/postsubscriber/ HTTP/1.1" 403 1019
+2019-03-08 05:33:23,391 weatherapp.views INFO     Email Id already present in database in post subscriber request.
+2019-03-08 05:33:23,395 django.server INFO     "POST /api/weather/postsubscriber/ HTTP/1.1" 200 24
