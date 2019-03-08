@@ -20,7 +20,7 @@ To Install Django Server:
         You can change the EMAIL_HOST_USER, EMAIL_HOST_PASSWORD for create the smtp connection
         You can change the FROM_EMAIL_ADDRESS for create the email address to be sent to customers through this email Id.
     
-    5. Run command -> python manage.py makemigrations weatherproject
+    5. Run command -> python manage.py makemigrations weatherapp
 
     6. Run command -> python manage.py migrate
 
