@@ -13,12 +13,13 @@ To Install Django Server:
     System Requirements:
         Python 3
         Pip 3
+    Steps Involved:
     1. Navigate inside to folder -> weatherpoweredapp/weather-app-server/
     2. Activate virtual environment(optional)
     3. Run command for windows -> pip install -r requirements.txt
        Run command for Linux/Mac -> sudo pip install -r requirements.txt
 
-    4. Change the settings in .env file.
+    4. Change the settings in .env file using any text editor.(.env file might be a hidden file in mac and windows)
         Enter the weatherbit api key in this API_KEY setting.
         You can change the EMAIL_HOST_USER, EMAIL_HOST_PASSWORD for create the smtp connection
         You can change the FROM_EMAIL_ADDRESS for create the email address to be sent to customers through this email Id.
