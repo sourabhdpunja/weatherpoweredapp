@@ -16,3 +16,33 @@
 2019-03-09 03:42:52,145 weatherapp.management.commands.email_trigger INFO     Created Email Object with to commonbatmanwayne@gmail.com and from sourabhpunjaklaviyo@gmail.com
 2019-03-09 03:42:52,168 weatherapp.management.commands.email_trigger INFO     Created Email Object with to sourabhpunjaklaviyo@gmail.com and from sourabhpunjaklaviyo@gmail.com
 2019-03-09 03:42:52,200 weatherapp.management.commands.email_trigger INFO     Created Email Object with to pp@gmail.com and from sourabhpunjaklaviyo@gmail.com
+2019-03-09 04:06:21,052 weatherapp.utils INFO     Request to weatherbit API for current weather successful.
+2019-03-09 04:06:21,607 weatherapp.utils INFO     Request to weatherbit API for 2019-03-08 weather successful.
+2019-03-09 04:06:21,896 weatherapp.utils INFO     Request to weatherbit API for 2019-03-07 weather successful.
+2019-03-09 04:06:22,821 weatherapp.utils INFO     Request to weatherbit API for 2019-03-06 weather successful.
+2019-03-09 04:06:26,319 weatherapp.utils INFO     Request to weatherbit API for 2019-03-05 weather successful.
+2019-03-09 04:06:26,699 weatherapp.utils INFO     Request to weatherbit API for 2019-03-04 weather successful.
+2019-03-09 04:06:26,746 weatherapp.management.commands.email_trigger INFO     Created Email Object with to sourabhdpunja@gmail.com and from sourabhpunjaklaviyo@gmail.com
+2019-03-09 04:06:29,964 weatherapp.utils INFO     Request to weatherbit API for current weather successful.
+2019-03-09 04:06:30,262 weatherapp.utils INFO     Request to weatherbit API for 2019-03-08 weather successful.
+2019-03-09 04:06:30,528 weatherapp.utils INFO     Request to weatherbit API for 2019-03-07 weather successful.
+2019-03-09 04:06:30,911 weatherapp.utils INFO     Request to weatherbit API for 2019-03-06 weather successful.
+2019-03-09 04:06:31,466 weatherapp.utils INFO     Request to weatherbit API for 2019-03-05 weather successful.
+2019-03-09 04:06:31,789 weatherapp.utils INFO     Request to weatherbit API for 2019-03-04 weather successful.
+2019-03-09 04:06:31,823 weatherapp.management.commands.email_trigger INFO     Created Email Object with to punja.so@husky.neu.edu and from sourabhpunjaklaviyo@gmail.com
+2019-03-09 04:06:32,019 weatherapp.utils INFO     Request to weatherbit API for current weather successful.
+2019-03-09 04:06:32,271 weatherapp.utils INFO     Request to weatherbit API for 2019-03-08 weather successful.
+2019-03-09 04:06:32,573 weatherapp.utils INFO     Request to weatherbit API for 2019-03-07 weather successful.
+2019-03-09 04:06:32,901 weatherapp.utils INFO     Request to weatherbit API for 2019-03-06 weather successful.
+2019-03-09 04:06:33,222 weatherapp.utils INFO     Request to weatherbit API for 2019-03-05 weather successful.
+2019-03-09 04:06:33,998 weatherapp.utils INFO     Request to weatherbit API for 2019-03-04 weather successful.
+2019-03-09 04:06:33,998 weatherapp.management.commands.email_trigger INFO     Created Email Object with to commonbatmanwayne@gamil.com and from sourabhpunjaklaviyo@gmail.com
+2019-03-09 04:06:34,021 weatherapp.management.commands.email_trigger INFO     Created Email Object with to commonbatmanwayne@gmail.com and from sourabhpunjaklaviyo@gmail.com
+2019-03-09 04:06:34,631 weatherapp.utils INFO     Request to weatherbit API for current weather successful.
+2019-03-09 04:06:34,913 weatherapp.utils INFO     Request to weatherbit API for 2019-03-08 weather successful.
+2019-03-09 04:06:35,225 weatherapp.utils INFO     Request to weatherbit API for 2019-03-07 weather successful.
+2019-03-09 04:06:35,981 weatherapp.utils INFO     Request to weatherbit API for 2019-03-06 weather successful.
+2019-03-09 04:06:36,285 weatherapp.utils INFO     Request to weatherbit API for 2019-03-05 weather successful.
+2019-03-09 04:06:36,646 weatherapp.utils INFO     Request to weatherbit API for 2019-03-04 weather successful.
+2019-03-09 04:06:36,705 weatherapp.management.commands.email_trigger INFO     Created Email Object with to sourabhpunjaklaviyo@gmail.com and from sourabhpunjaklaviyo@gmail.com
+2019-03-09 04:06:36,726 weatherapp.management.commands.email_trigger INFO     Created Email Object with to pp@gmail.com and from sourabhpunjaklaviyo@gmail.com
