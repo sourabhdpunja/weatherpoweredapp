@@ -32,7 +32,7 @@ To Install Django Server:
 How to use the app after the server and client are running:
     
     1. Using front end application subscribe using a emailaddress and location.
-    2. Once successful registration of the user is done, Navigate to folder weatherpoweredapp/python-app/weatherproject/
+    2. Once successful registration of the user is done, Navigate to folder weatherpoweredapp/weather-app-server/
     3. Run the Django management command -> python manage.py email_trigger
     4. After the cli completes running, the user registered shoud obtain an email.
 
