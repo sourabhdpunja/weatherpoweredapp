@@ -7,7 +7,7 @@ To Install react client:
     1. Navigate inside to folder -> weatherpoweredapp/weather-app/.
     2. Run command -> npm install
     3. After the packages are installed, Run command -> npm start
-    4. Open in browser the URL "http://localhost:3000"
+    4. After the previous command completes, Open in browser the URL "http://localhost:3000"
 
 To Install Django Server:
     System Requirements:
