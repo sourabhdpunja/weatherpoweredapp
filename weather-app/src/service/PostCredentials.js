@@ -2,11 +2,12 @@ import axios from 'axios';
 
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+axios.defaults.withCredentials = true;
 const onPostCredential = async (credential) => {
     try {
         var config = {
             headers: {
-                'Access-Control-Allow-Origin': '*',            
+                'Access-Control-Allow-Origin': '*',  
             },
         };
         let response = await axios.post('api/weather/postsubscriber/', {

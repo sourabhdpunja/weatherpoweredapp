@@ -56,17 +56,16 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'urls'
 CSRF_COOKIE_SECURE=True
 CSRF_COOKIE_NAME='csrftoken'
+CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_METHODS = (
     'GET',
     'POST',
 )
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
-    'localhost:8000',
 )
 CORS_ORIGIN_REGEX_WHITELIST = (
     'localhost:3000',
-    'localhost:8000',
 )
 
 TEMPLATES = [

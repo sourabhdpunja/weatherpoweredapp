@@ -10,6 +10,9 @@ To Install react client:
     4. Open in browser the URL "http://localhost:3000"
 
 To Install Django Server:
+    System Requirements:
+        Python 3
+        Pip 3
     1. Navigate inside to folder -> weatherpoweredapp/weather-app-server/
     2. Activate virtual environment(optional)
     3. Run command for windows -> pip install -r requirements.txt

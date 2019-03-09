@@ -3,5 +3,5 @@ from django.conf.urls import url
 from weatherapp.views import post_subscriber
 
 urlpatterns = [
-    url(r'postsubscriber/', post_subscriber, name='post_subscriber'),
+    url(r'subscriber/', post_subscriber, name='post_subscriber'),
 ];

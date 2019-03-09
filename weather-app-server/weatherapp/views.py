@@ -2,14 +2,15 @@ from django.http import JsonResponse, HttpResponseBadRequest
 from django.http import HttpResponse
 import logging
 import json
-# Custom Imports
-from weatherapp.models import Subscribers
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+from django.views.decorators.csrf import csrf_exempt
+# Custom Imports
+from weatherapp.models import Subscribers
 
 logger = logging.getLogger(__name__)
 
-
+@csrf_exempt
 def post_subscriber(request):
     """
     Method intercepting post request to add subscriber if not already present.
