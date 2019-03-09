@@ -10,7 +10,7 @@ const onPostCredential = async (credential) => {
                 'Access-Control-Allow-Origin': '*',  
             },
         };
-        let response = await axios.post('api/weather/postsubscriber/', {
+        let response = await axios.post('api/subscriber/', {
             ...credential
         }, config);
         let data = response.data;
