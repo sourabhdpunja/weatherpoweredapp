@@ -8,7 +8,7 @@ import json
 from decouple import config
 
 # custom imports
-from weatherapp.apiurlconstants import CURRENT_TEMP_WEATHERBIT_API,HISTORICAL_TEMP_WEATHERBIT_API
+from weatherapp.apiurlconstants import CURRENT_TEMP_WEATHERBIT_API, HISTORICAL_TEMP_WEATHERBIT_API
 
 logger = logging.getLogger(__name__)
 

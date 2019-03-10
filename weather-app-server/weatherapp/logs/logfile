@@ -48,3 +48,11 @@
 2019-03-09 04:06:36,726 weatherapp.management.commands.email_trigger INFO     Created Email Object with to pp@gmail.com and from sourabhpunjaklaviyo@gmail.com
 2019-03-09 21:48:26,346 weatherapp.views INFO     Email Id already present in database in post subscriber request.
 2019-03-09 21:48:26,373 django.server INFO     "POST /api/subscriber/ HTTP/1.1" 200 24
+2019-03-09 21:58:47,825 weatherapp.views INFO     Record successfully created in Subscribers.
+2019-03-09 21:58:47,827 django.server INFO     "POST /api/subscriber/ HTTP/1.1" 200 17
+2019-03-09 21:59:03,195 weatherapp.views INFO     Email Id already present in database in post subscriber request.
+2019-03-09 21:59:03,196 django.server INFO     "POST /api/subscriber/ HTTP/1.1" 200 24
+2019-03-09 21:59:43,793 weatherapp.views INFO     Email Id already present in database in post subscriber request.
+2019-03-09 21:59:43,794 django.server INFO     "POST /api/subscriber/ HTTP/1.1" 200 24
+2019-03-09 21:59:47,312 weatherapp.views INFO     Email Id already present in database in post subscriber request.
+2019-03-09 21:59:47,314 django.server INFO     "POST /api/subscriber/ HTTP/1.1" 200 24

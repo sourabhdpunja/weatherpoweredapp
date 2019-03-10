@@ -10,6 +10,7 @@ from weatherapp.models import Subscribers
 
 logger = logging.getLogger(__name__)
 
+
 @csrf_exempt
 def post_subscriber(request):
     """

@@ -7,7 +7,7 @@ from decouple import config
 
 # Custom imports
 from weatherapp.emailclass.email import Email
-from weatherapp.utils import calc_avg_temp,get_closest_coordinate,fetch_curr_temp
+from weatherapp.utils import calc_avg_temp, get_closest_coordinate, fetch_curr_temp
 from weatherapp.models import Subscribers
 
 logger = logging.getLogger(__name__)
