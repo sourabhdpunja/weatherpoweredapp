@@ -56,3 +56,12 @@
 2019-03-09 21:59:43,794 django.server INFO     "POST /api/subscriber/ HTTP/1.1" 200 24
 2019-03-09 21:59:47,312 weatherapp.views INFO     Email Id already present in database in post subscriber request.
 2019-03-09 21:59:47,314 django.server INFO     "POST /api/subscriber/ HTTP/1.1" 200 24
+2019-03-09 22:16:36,531 weatherapp.views INFO     Email Id already present in database in post subscriber request.
+2019-03-09 22:16:36,533 django.server INFO     "POST /api/subscriber/ HTTP/1.1" 200 24
+2019-03-09 22:19:24,177 weatherapp.utils INFO     Request to weatherbit API for current weather successful.
+2019-03-09 22:19:24,438 weatherapp.utils INFO     Request to weatherbit API for 2019-03-08 weather successful.
+2019-03-09 22:19:25,133 weatherapp.utils INFO     Request to weatherbit API for 2019-03-07 weather successful.
+2019-03-09 22:19:25,383 weatherapp.utils INFO     Request to weatherbit API for 2019-03-06 weather successful.
+2019-03-09 22:19:25,860 weatherapp.utils INFO     Request to weatherbit API for 2019-03-05 weather successful.
+2019-03-09 22:19:26,121 weatherapp.utils INFO     Request to weatherbit API for 2019-03-04 weather successful.
+2019-03-09 22:19:26,271 weatherapp.management.commands.email_trigger INFO     Created Email Object with to sourabhdpunja@gmail.com and from sourabhpunjaklaviyo@gmail.com
