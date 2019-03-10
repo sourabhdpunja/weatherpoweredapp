@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import {
     geocodeByAddress,
     getLatLng,
-  } from 'react-places-autocomplete';
+} from 'react-places-autocomplete';
 
 // Custom imports
 import LocationComponent from './LocationComponent';
@@ -14,19 +14,20 @@ import onPostCredential from '../../service/PostCredentials'
 import LoadingSpinner from './LoadingSpinner';
 import SuccessMessage from './SuccessMessage';
 import ErrorMessage from './ErrorMessage';
+import { INVALID_EMAIL_ADDRESS_MSG, INVALID_LOCATION_MSG } from '../utils/Constants'
 
 const _style = {
     container: {
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100%',
-      height: '100%',
-      marginTop: 20,
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        height: '100%',
+        marginTop: 20,
     },
     textField: {
-      marginLeft: 120,
-      marginRight: 120,
-      minHeight: 60,
+        marginLeft: 120,
+        marginRight: 120,
+        minHeight: 60,
     },
     buttonContainer: {
         display: 'flex',
@@ -49,7 +50,7 @@ class FormLayout extends Component {
             errorEmailText: '',
             errorLocationText: '',
             // boolean used to render loading spinner
-            isLoading: false, 
+            isLoading: false,
             // boolean used to render success message
             isSuccess: false,
             // boolean used to render error message
@@ -64,45 +65,49 @@ class FormLayout extends Component {
     handleChangeAddress = location => {
         this.setState({ location });
     };
-     
+
     handleSelect = location => {
         this.setState({ location });
         geocodeByAddress(location)
-          .then(results => getLatLng(results[0]))
-          .then(latLng => {
-              this.setState({ latitude: parseFloat(latLng.lat.toFixed(4)),
-                              longitude: parseFloat(latLng.lng.toFixed(4)),
-                              errorLocationText: '',
+            .then(results => getLatLng(results[0]))
+            .then(latLng => {
+                this.setState({
+                    latitude: parseFloat(latLng.lat.toFixed(4)),
+                    longitude: parseFloat(latLng.lng.toFixed(4)),
+                    errorLocationText: '',
                 });
             })
-          .catch(error => {
-              this.setState({ errorLocationText: "Invalid location. Please try again",
-                              latitude: '',
-                              longitude: '',
-                              location: '',
+            .catch(error => {
+                this.setState({
+                    errorLocationText: INVALID_LOCATION_MSG,
+                    latitude: '',
+                    longitude: '',
+                    location: '',
                 });
-          });
+            });
     };
 
     submitCredentials = (email, location, latitude, longitude) => {
         email = email.trim()
-        if (!EmailValidator.validate(email)){
-            this.setState({ errorEmailText: "Invalid Email. Please use a valid email address" })
-        } else if(!latitude || !longitude || !location) {
-            this.setState({ errorEmailText: "",
-                            errorLocationText: "Please enter valid location."
-                });
+        if (!EmailValidator.validate(email)) {
+            this.setState({ errorEmailText: INVALID_EMAIL_ADDRESS_MSG })
+        } else if (!latitude || !longitude || !location) {
+            this.setState({
+                errorEmailText: "",
+                errorLocationText: INVALID_LOCATION_MSG
+            });
         } else {
-            this.setState({ errorEmailText: "",
-                            errorLocationText: "",
-                });
+            this.setState({
+                errorEmailText: "",
+                errorLocationText: "",
+            });
             this.setState({ isLoading: true }, () => {
                 const response = onPostCredential({ email, location, latitude, longitude })
                 response.then((data) => {
                     this.setState({
-                        isLoading: data.isLoading || false,
-                        isSuccess: data.isSuccess || false,
-                        isError: data.isError || false,
+                        isLoading: false,
+                        isSuccess: data.isSuccess,
+                        isError: data.isError,
                         errorEmailText: data.errorEmailText || "",
                         errorLocationText: data.errorLocationText || "",
                     });
@@ -122,24 +127,24 @@ class FormLayout extends Component {
                     value={this.state.email}
                     style={_style.textField}
                     onChange={this.handleChange('email')}
-                    error={this.state.errorEmailText.length === 0 ? false : true }
+                    error={this.state.errorEmailText.length > 0}
                     helperText={this.state.errorEmailText}
                     margin="normal"
                 />
                 <LocationComponent
-                    location = {this.state.location}
-                    handleChangeAddress = {this.handleChangeAddress}
-                    error ={this.state.errorLocationText.length === 0 ? false : true }
-                    handleSelect = {this.handleSelect}
+                    location={this.state.location}
+                    handleChangeAddress={this.handleChangeAddress}
+                    error={this.state.errorLocationText.length > 0}
+                    handleSelect={this.handleSelect}
                     errorLocationText={this.state.errorLocationText}
                 />
-                <div  style={_style.buttonContainer} >
-                    <Button 
-                        color="primary" 
-                        variant="contained" 
+                <div style={_style.buttonContainer} >
+                    <Button
+                        color="primary"
+                        variant="contained"
                         style={_style.button}
                         disabled={this.state.isLoading}
-                        onClick = {() => 
+                        onClick={() =>
                             this.submitCredentials(
                                 this.state.email, this.state.location, this.state.latitude, this.state.longitude
                             )}>

@@ -8,8 +8,8 @@ const _style = {
         minHeight: 200,
     },
     textField: {
-      marginLeft: 120,
-      marginRight: 120,
+        marginLeft: 120,
+        marginRight: 120,
     },
     location: {
         marginLeft: 120,
@@ -21,46 +21,46 @@ const _style = {
 };
 
 class LocationComponent extends Component {
-    
+
     renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions, loading }) => {
-        return(
-        <div style={_style.container}>
-          <TextField
-            required
-            style={_style.location}
-            margin="normal"
-            label="Location"
-            error={this.props.error}
-            helperText={this.props.errorLocationText}
-            {...getInputProps({
-                placeholder: 'Eg: Boston',
-                className: 'location-search-input',
-            })} 
-          />
-          <div className="autocomplete-dropdown-container">
-            {loading && <div style = {_style.textField}>Loading...</div>}
-            {suggestions.map(suggestion => {
-                const className = suggestion.active
-                    ? 'suggestion-item--active'
-                    : 'suggestion-item';
-                // inline style for demonstration purpose
-                const style = suggestion.active
-                    ? { backgroundColor: '#fafafa', cursor: 'pointer',  marginLeft: 120,  marginRight: 120 }
-                    : { backgroundColor: '#ffffff', cursor: 'pointer',  marginLeft: 120,  marginRight: 120 };
-                return (
-                    <div
-                        {...getSuggestionItemProps(suggestion, {
-                            className,
-                            style,
-                        })}
-                    >
-                        <span style={_style.position}>{suggestion.description}</span>
-                        <Divider style={_style.divider}/>
-                    </div>
-                );
-            })}
-          </div>
-        </div>);
+        return (
+            <div style={_style.container}>
+                <TextField
+                    required
+                    style={_style.location}
+                    margin="normal"
+                    label="Location"
+                    error={this.props.error}
+                    helperText={this.props.errorLocationText}
+                    {...getInputProps({
+                        placeholder: 'Eg: Boston',
+                        className: 'location-search-input',
+                    })}
+                />
+                <div className="autocomplete-dropdown-container">
+                    {loading && <div style={_style.textField}>Loading...</div>}
+                    {suggestions.map(suggestion => {
+                        const className = suggestion.active
+                            ? 'suggestion-item--active'
+                            : 'suggestion-item';
+                        // inline style for demonstration purpose
+                        const style = suggestion.active
+                            ? { backgroundColor: '#fafafa', cursor: 'pointer', marginLeft: 120, marginRight: 120 }
+                            : { backgroundColor: '#ffffff', cursor: 'pointer', marginLeft: 120, marginRight: 120 };
+                        return (
+                            <div
+                                {...getSuggestionItemProps(suggestion, {
+                                    className,
+                                    style,
+                                })}
+                            >
+                                <span style={_style.position}>{suggestion.description}</span>
+                                <Divider style={_style.divider} />
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>);
     };
 
     render() {
@@ -74,7 +74,7 @@ class LocationComponent extends Component {
                 {this.renderFunc}
             </PlacesAutocomplete>
         )
-    } 
+    }
 }
 
 export default LocationComponent;
