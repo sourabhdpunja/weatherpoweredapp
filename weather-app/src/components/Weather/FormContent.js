@@ -14,7 +14,7 @@ import onPostCredential from '../../service/PostCredentials'
 import LoadingSpinner from './LoadingSpinner';
 import SuccessMessage from './SuccessMessage';
 import ErrorMessage from './ErrorMessage';
-import { INVALID_EMAIL_ADDRESS_MSG, INVALID_LOCATION_MSG } from '../utils/Constants'
+import { INVALID_EMAIL_ADDRESS_MSG, INVALID_LOCATION_MSG } from '../../utils/Constants'
 
 const _style = {
     container: {
