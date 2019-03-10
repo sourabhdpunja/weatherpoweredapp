@@ -123,7 +123,7 @@ class FormLayout extends Component {
                     required
                     id="standard-name"
                     label="Email Address"
-                    placeholder="eg: sourabhdpunja@gmail.com"
+                    placeholder="eg: sourabh@gmail.com"
                     value={this.state.email}
                     style={_style.textField}
                     onChange={this.handleChange('email')}
