@@ -9,6 +9,3 @@
 2019-03-09 03:41:45,503 weatherapp.management.commands.email_trigger INFO     Created Email Object with to commonbatmanwayne@gamil.com and from sourabhpunjaklaviyo@gmail.com
 2019-03-09 03:41:45,535 weatherapp.management.commands.email_trigger INFO     Created Email Object with to commonbatmanwayne@gmail.com and from sourabhpunjaklaviyo@gmail.com
 2019-03-09 03:41:45,567 weatherapp.management.commands.email_trigger INFO     Created Email Object with to sourabhpunjaklaviyo@gmail.com and from sourabhpunjaklaviyo@gmail.com
-2019-03-09 03:41:45,582 weatherapp.management.commands.email_trigger INFO     Created Email Object with to pp@gmail.com and from sourabhpunjaklaviyo@gmail.com
-2019-03-09 03:42:52,062 weatherapp.management.commands.email_trigger INFO     Created Email Object with to sourabhdpunja@gmail.com and from sourabhpunjaklaviyo@gmail.com
-2019-03-09 03:42:52,080 weatherapp.management.commands.email_trigger INFO     Created Email Object with to punja.so@husky.neu.edu and from sourabhpunjaklaviyo@gmail.com
